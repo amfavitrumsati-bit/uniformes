@@ -17,7 +17,7 @@ const firebaseConfig = {
 const initialAuthToken = null;
 
 // Utility function to convert File/Blob to Base64 string
-const fileToBase64 = (file) => {
+const fileToBase64 = (file:any) => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -27,7 +27,7 @@ const fileToBase64 = (file) => {
 };
 
 // Utility function for exponential backoff
-const withBackoff = async (fn, maxRetries = 5, delay = 1000) => {
+const withBackoff = async (fn:any, maxRetries = 5, delay = 1000) => {
     for (let i = 0; i < maxRetries; i++) {
         try {
             return await fn();
@@ -125,7 +125,7 @@ export default function UniformManager() {
         setDb(firestore);
         setAuth(authInstance);
 
-        const unsubscribe = onAuthStateChanged(authInstance, async (user) => {
+        const unsubscribe = onAuthStateChanged(authInstance, async (user:any) => {
           if (user) {
             setUserId(user.uid);
             setIsAuthReady(true);
@@ -166,7 +166,7 @@ export default function UniformManager() {
     try {
       const q = query(collection(db, getDataPath()));
 
-      const unsubscribe = onSnapshot(q, (snapshot) => {
+      const unsubscribe = onSnapshot(q, (snapshot:any) => {
         const fetchedDeliveries = [];
         snapshot.forEach((doc) => {
           fetchedDeliveries.push({ id: doc.id, ...doc.data() });
@@ -842,4 +842,5 @@ export default function UniformManager() {
     </div>
   );
 }
+
 
