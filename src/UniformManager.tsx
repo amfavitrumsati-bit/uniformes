@@ -5,9 +5,16 @@ import { getFirestore, doc, setDoc, collection, Timestamp, query, onSnapshot } f
 import { Camera, Clipboard, Factory, CheckCircle, AlertTriangle, Loader, Users, Upload, Tag, User, Flame, Zap, BarChart2, List } from 'lucide-react';
 
 // --- Global Variable Declarations (Mandatory for Canvas Environment) ---
-const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+const appId = 'default-app-id';
+const firebaseConfig = {
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: ""
+};
+const initialAuthToken = null;
 
 // Utility function to convert File/Blob to Base64 string
 const fileToBase64 = (file) => {
@@ -835,3 +842,4 @@ export default function UniformManager() {
     </div>
   );
 }
+
